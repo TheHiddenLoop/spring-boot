@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-sun: var(--sun);
+  --color-sun-ink: #3b2a00;
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-brand: #2f4bff;
+}
+
+@theme {
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  --animate-pop: pop 0.18s ease-out;
+  @keyframes shimmer {
+    to { background-position: -200% 0; }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  }
+}
+
+:root {
+  --canvas: #eef1f6;
+  --surface: #ffffff;
+  --surface-2: #f5f7fb;
+  --ink: #14213d;
+  --ink-2: #4a5672;
+  --ink-3: #6b7790;
+  --line: #dce2ec;
+  --accent: #2f4bff;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3e8ff;
+  --sun: #ffb627;
+  --ok: #0f6b4f;
+  --ok-soft: #ddf3ea;
+  --warn: #7a4b00;
+  --warn-soft: #ffefc7;
+  --bad: #c62f45;
+  --bad-soft: #fde3e7;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --canvas: #0e1424;
+  --surface: #161e33;
+  --surface-2: #1c2640;
+  --ink: #eaf0ff;
+  --ink-2: #aab6d3;
+  --ink-3: #8794b3;
+  --line: #26314d;
+  --accent: #7b8fff;
+  --accent-ink: #0b1230;
+  --accent-soft: #222e5c;
+  --sun: #ffc24d;
+  --ok: #5fd3a6;
+  --ok-soft: #123a2e;
+  --warn: #ffc24d;
+  --warn-soft: #3d2e0a;
+  --bad: #ff8b9b;
+  --bad-soft: #3f1823;
+  color-scheme: dark;
+}
+
+@layer base {
+  body {
+    @apply bg-canvas font-body text-ink antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-display tracking-tight text-balance;
+  }
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    @apply outline-3 outline-offset-2 outline-accent;
+  }
+}
